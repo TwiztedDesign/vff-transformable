@@ -1,6 +1,9 @@
 /**=============== Examples =================**/
 // require('./examples/vff-title-element');
-// require('./examples/vff-calculator-api');
+require('./transformable');
+// require('./jq-transformable');
+require('./positionable');
+require('./interactable');
 /**==========================================**/
 
 /**======= To define new vff element ==============**/

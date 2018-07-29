@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="width:100%;height:100%;">
 <head>
     <meta charset="UTF-8">
     <title>VFF Extension basic example</title>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="https://rawgit.com/TwiztedDesign/vff/master/dist/vff.js"></script>
+
     <script src="../../dist/vff-ext.js"></script>
 
 </head>
-<body>
-
+<body style="width:100%;height:100%;margin:0;">
     <h1>This is a basic example of the vff extension</h1>
 
     <vff-title text="This is a vff wrapped title"></vff-title>
@@ -18,7 +21,24 @@
     <div id="results"></div>
 
 
-    <script src="./script.js"></script>
+    <!--<div class="bc" style="position:absolute; width: 500px; height: 500px; background-color: darkblue">-->
+        <!--<div style="position: absolute; width: 50%; height: 100%; background-color: darkgoldenrod"></div>-->
+
+        <!--<img src="../cat.jpg" style="position: absolute; width: 100%; height: 100%;" >-->
+        <!--<h1 style="position: absolute">Cat!!</h1>-->
+    <!--</div>-->
+    <!--<vff-transformable style="position:absolute; width: 500px; height: 500px;"></vff-transformable>-->
+
+
+
+    <vff-interactable style="width: 500px; height: 500px;">
+        <img src="../cat.jpg" style="width: 100%; height: 100%;" >
+        <h1 style="position: absolute; top: 0;">Title</h1>
+    </vff-interactable>
+
+
+
+    <!--<script src="./script.js"></script>-->
 
 </body>
 </html>
