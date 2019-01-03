@@ -10463,12 +10463,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _positionable = __webpack_require__(0);
-
-var _positionable2 = _interopRequireDefault(_positionable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -10476,7 +10470,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var interact = __webpack_require__(6);
-
 
 function dragMoveListener(event) {
     var target = event.target,
@@ -10493,8 +10486,8 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y);
 }
 
-var VffInteractable = function (_VffPositionable) {
-    _inherits(VffInteractable, _VffPositionable);
+var VffInteractable = function (_HTMLElement) {
+    _inherits(VffInteractable, _HTMLElement);
 
     function VffInteractable() {
         _classCallCheck(this, VffInteractable);
@@ -10514,51 +10507,26 @@ var VffInteractable = function (_VffPositionable) {
             };
             interact('.draggable').draggable({
                 onmove: dragMoveListener
-                // restrict: {
-                //     restriction: 'parent',
-                //     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-                // },
             }).resizable({
-                // resize from all edges and corners
                 edges: { left: true, right: true, bottom: true, top: true },
-
-                // keep the edges inside the parent
-                // restrictEdges: {
-                //     outer: 'parent',
-                //     endOnly: true,
-                // },
-
-                // minimum size
-                // restrictSize: {
-                //     min: { width: 100, height: 50 },
-                // },
-
                 inertia: true
             }).on('resizemove', function (event) {
                 var target = event.target,
                     x = parseFloat(target.getAttribute('data-x')) || 0,
                     y = parseFloat(target.getAttribute('data-y')) || 0;
 
-                self.width = event.rect.width;
-                self.height = event.rect.height;
-
                 // update the element's style
-                // target.style.width  = event.rect.width + 'px';
-                // target.style.height = event.rect.height + 'px';
+                target.style.width = event.rect.width + 'px';
+                target.style.height = event.rect.height + 'px';
 
                 // translate when resizing from top or left edges
                 x += event.deltaRect.left;
                 y += event.deltaRect.top;
 
-                self.left = x;
-                self.top = y;
-
-                // target.style.webkitTransform = target.style.transform =
-                //     'translate(' + x + 'px,' + y + 'px)';
+                target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
 
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
-                // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
             });
         }
     }, {
@@ -10567,7 +10535,7 @@ var VffInteractable = function (_VffPositionable) {
     }]);
 
     return VffInteractable;
-}(_positionable2.default);
+}(HTMLElement);
 
 exports.default = VffInteractable;
 
