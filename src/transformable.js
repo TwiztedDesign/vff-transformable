@@ -86,7 +86,6 @@ export default class VffTransformable extends HTMLElement {
         target.setAttribute('data-x', x);
         target.setAttribute('data-y', y);
 
-
     }
 
 

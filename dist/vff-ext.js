@@ -60,21 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(2);
+__webpack_require__(1);
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92,7 +91,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var interact = __webpack_require__(6);
+var interact = __webpack_require__(2);
 
 function dragMoveListener(event) {
     var target = event.target,
@@ -156,6 +155,44 @@ var VffTransformable = function (_HTMLElement) {
     }, {
         key: 'disconnectedCallback',
         value: function disconnectedCallback() {}
+    }, {
+        key: 'expose',
+        value: function expose() {
+            return {
+                X: 'x',
+                Y: 'y',
+                Width: 'width',
+                Height: 'height'
+            };
+        }
+    }, {
+        key: 'x',
+        get: function get() {
+            return this.getAttribute("data-x") || "";
+        }
+    }, {
+        key: 'y',
+        set: function set(value) {
+            this.setAttribute('data-x', value);
+
+            var target = this;
+            var x = parseFloat(target.getAttribute('data-x')) || 0;
+            var y = parseFloat(target.getAttribute('data-y')) || 0;
+
+            // update the element's style
+
+            target.style.width = event.rect.width + 'px';
+            target.style.height = event.rect.height + 'px';
+
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left;
+            y += event.deltaRect.top;
+
+            target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+        }
     }]);
 
     return VffTransformable;
@@ -167,10 +204,7 @@ exports.default = VffTransformable;
 window.vff.define("vff-transformable", VffTransformable);
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;/**
