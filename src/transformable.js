@@ -64,7 +64,7 @@ export default class VffTransformable extends HTMLElement {
     get x() {
         return this.getAttribute("data-x") || "";
     }
-    set y(value) {
+    set x(value) {
         this.setAttribute('data-x', value);
 
         let target = this;
@@ -87,7 +87,6 @@ export default class VffTransformable extends HTMLElement {
         target.setAttribute('data-y', y);
 
     }
-
 
     disconnectedCallback() {
 
