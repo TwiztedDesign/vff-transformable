@@ -168,7 +168,7 @@ var VffTransformable = function (_HTMLElement) {
     }, {
         key: 'x',
         get: function get() {
-            return this.getAttribute("data-x") || "";
+            return this.getAttribute("data-x") || 0;
         },
         set: function set(value) {
             this.setAttribute('data-x', value);

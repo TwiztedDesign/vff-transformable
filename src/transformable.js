@@ -62,7 +62,7 @@ export default class VffTransformable extends HTMLElement {
     }
 
     get x() {
-        return this.getAttribute("data-x") || "";
+        return this.getAttribute("data-x") || 0;
     }
     set x(value) {
         this.setAttribute('data-x', value);
