@@ -36,6 +36,8 @@ export default class VffTransformable extends HTMLElement {
         interact('.draggable')
             .draggable({
                 onmove: dragMoveListener,
+                inertia: false,
+                autoScroll: true
             })
             .resizable({
                 edges: { left: true, right: true, bottom: true, top: true },

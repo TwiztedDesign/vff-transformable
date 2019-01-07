@@ -130,7 +130,9 @@ var VffTransformable = function (_HTMLElement) {
                 self.bounding = self.getBoundingClientRect();
             };
             interact('.draggable').draggable({
-                onmove: dragMoveListener
+                onmove: dragMoveListener,
+                inertia: false,
+                autoScroll: true
             }).resizable({
                 edges: { left: true, right: true, bottom: true, top: true },
                 inertia: false
